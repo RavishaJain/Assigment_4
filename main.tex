@@ -1,0 +1,641 @@
+\let\negmedspace\undefined
+\let\negthickspace\undefined
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+%\documentclass[conference]{IEEEtran}
+%\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amssymb,amsfonts,amsthm,amsmath}
+%\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{txfonts}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{gensymb}
+
+%%
+%\usepackage{setspace}
+%%\doublespacing
+%\singlespacing
+%
+%%\usepackage{graphicx}
+%%\usepackage{amssymb}
+%%\usepackage{relsize}
+%\usepackage[cmex10]{amsmath}
+%%\interdisplaylinepenalty=2500
+%%\savesymbol{iint}
+%%\usepackage{txfonts}
+%%\restoresymbol{TXF}{iint}
+%%\usepackage{wasysym}
+%\usepackage{amsthm}
+%\usepackage{mathrsfs}
+%\usepackage{txfonts}
+%%\usepackage{stfloats}
+%%\usepackage{cite}
+%%\usepackage{cases}
+%%\usepackage{subfig}
+%%\usepackage{xtab}
+%%\usepackage{multirow}
+%%\usepackage{algorithm}
+%%\usepackage{algpseudocode}
+%%\usepackage{tikz}
+%%\usepackage{circuitikz}
+%%\usepackage{verbatim}
+\usepackage{hyperref}
+%%\usepackage{stmaryrd}
+%%\usepackage{tkz-euclide} % loads  TikZ and tkz-base
+%%\usetkzobj{all}
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+%  %optionally (for landscape tables embedded in another document): %%
+%    \usepackage{lscape}     
+%%\usepackage{multicol}
+%\usepackage{chngcntr}
+%\usepackage{enumerate}
+
+%\usepackage{wasysym}
+%\newcounter{MYtempeqncnt}
+\DeclareMathOperator*{\Res}{Res}
+%\renewcommand{\baselinestretch}{2}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+\def\inputGnumericTable{}                                 %%
+
+\lstset{
+language=tex,
+frame=single, 
+breaklines=true
+}
+
+\begin{document}
+%
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}[problem]{Definition}
+%\newtheorem{thm}{Theorem}[section] 
+%\newtheorem{defn}[thm]{Definition}
+%\newtheorem{algorithm}{Algorithm}[section]
+%\newtheorem{cor}{Corollary}
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+
+\bibliographystyle{IEEEtran}
+%\bibliographystyle{ieeetr}
+
+
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\re}[1]{\ensuremath{\text{Re}\left(#1\right)}}
+\providecommand{\im}[1]{\ensuremath{\text{Im}\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+%\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E\left[ #1 \right]}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+%\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
+	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+	\newcommand*{\permcomb}[4][0mu]{{{}^{#3}\mkern#1#2_{#4}}}
+\newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
+\newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
+\providecommand{\gauss}[2]{\mathcal{N}\ensuremath{\left(#1,#2\right)}}
+%%
+%	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+%\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\newcommand{\sinc}{\,\text{sinc}\,}
+\newcommand{\rect}{\,\text{rect}\,}
+
+%\numberwithin{equation}{section}
+\numberwithin{equation}{subsection}
+%\numberwithin{problem}{section}
+%\numberwithin{definition}{section}
+\makeatletter
+\@addtoreset{figure}{problem}
+\makeatother
+
+\let\StandardTheFigure\thefigure
+\let\vec\mathbf
+\let\j\jmath
+%\renewcommand{\thefigure}{\theproblem.\arabic{figure}}
+\renewcommand{\thefigure}{\theproblem}
+%\setlist[enumerate,1]{before=\renewcommand\theequation{\theenumi.\arabic{equation}}
+%\counterwithin{equation}{enumi}
+
+
+%\renewcommand{\theequation}{\arabic{subsection}.\arabic{equation}}
+
+\def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
+     \def\rightbox#1{\makebox[0in][r]{#1}}
+     \def\centbox#1{\makebox[0in]{#1}}
+     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+
+\vspace{3cm}
+
+\title{
+%	\logo{
+	Probability
+%	}
+}
+%\title{
+%	\logo{Matrix Analysis through Octave}{\begin{center}\includegraphics[scale=.24]{tlc}\end{center}}{}{HAMDSP}
+%}
+
+
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+%\title{Matrix Analysis through Octave}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+
+\author{
+	RAVISHA JAIN\\
+	CC22MTECH14001\\
+	CLIMATE CHANGE DEPARTMENT\\
+	
+	%<-this % stops a space
+%\thanks{}}
+}
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+%\markboth{Journal of \LaTeX\ Class Files,~Vol.~6, No.~1, January~2007}%
+%{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Journals}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2007 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+
+
+% make the title area
+\maketitle
+
+\newpage
+
+
+
+\bigskip
+
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+%\renewcommand{\theequation}{\theenumi}
+
+%\begin{abstract}
+%%\boldmath
+%In this letter, an algorithm for evaluating the exact analytical bit error rate  (BER)  for the piecewise linear (PL) combiner for  multiple relays is presented. Previous results were available only for upto three relays. The algorithm is unique in the sense that  the actual mathematical expressions, that are prohibitively large, need not be explicitly obtained. The diversity gain due to multiple relays is shown through plots of the analytical BER, well supported by simulations. 
+%
+%\end{abstract}
+% IEEEtran.cls defaults to using nonbold math in the Abstract.
+% This preserves the distinction between vectors and scalars. However,
+% if the journal you are submitting to favors bold math in the abstract,
+% then you can use LaTeX's standard command \boldmath at the very start
+% of the abstract to achieve this. Many IEEE journals frown on math
+% in the abstract anyway.
+
+% Note that keywords are not normally used for peerreview papers.
+%\begin{IEEEkeywords}
+%Cooperative diversity, decode and forward, piecewise linear
+%\end{IEEEkeywords}
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+%\IEEEpeerreviewmaketitle
+
+%\begin{abstract}
+%\end{abstract}
+
+%\iffalse
+
+
+
+
+
+%% Copyright (C) 2020 Saurabh Joshi
+%%% 
+%\let\negmedspace\undefined
+%\let\negthickspace\undefined
+%
+%\documentclass[journal,12pt,onecolumn]{IEEEtran}
+%%\documentclass[journal,12pt,twocolumn]{IEEEtran}
+%%
+%\usepackage{setspace}
+%\usepackage{gensymb}
+%%\doublespacing
+%\singlespacing
+%
+%%\usepackage{graphicx}
+%%\usepackage{amssymb}
+%%\usepackage{relsize}
+%\usepackage[cmex10]{amsmath}
+%%\usepackage{amsthm}
+%%\interdisplaylinepenalty=2500
+%%\savesymbol{iint}
+%%\usepackage{txfonts}
+%%\restoresymbol{TXF}{iint}
+%%\usepackage{wasysym}
+%\usepackage{amsthm}
+%\usepackage{mathrsfs}
+%\usepackage{txfonts}
+%\usepackage{stfloats}
+%\usepackage{cite}
+%\usepackage{cases}
+%\usepackage{subfig}
+%%\usepackage{xtab}
+%\usepackage{longtable}
+%\usepackage{multirow}
+%%\usepackage{algorithm}
+%%\usepackage{algpseudocode}
+%\usepackage{enumitem}
+%\usepackage{mathtools}
+%\usepackage{tikz}
+%\usepackage{circuitikz}
+%\usepackage{verbatim}
+%\usepackage{hyperref}
+%%\usepackage{stmaryrd}
+%\usepackage{tkz-euclide} % loads  TikZ and tkz-base
+%%\usetkzobj{all}
+%\usepackage{listings}
+%    \usepackage{color}                                            %%
+%    \usepackage{array}                                            %%
+%    \usepackage{longtable}                                        %%
+%    \usepackage{calc}                                             %%
+%    \usepackage{multirow}                                         %%
+%    \usepackage{hhline}                                           %%
+%    \usepackage{ifthen}                                           %%
+%  %optionally (for landscape tables embedded in another document): %%
+%    \usepackage{lscape}     
+%\usepackage{multicol}
+%\usepackage{chngcntr}
+%\usepackage{iftex}
+%%\usepackage[latin9]{inputenc}
+%\usepackage{geometry}
+%\usepackage{bm}
+%%\geometry{verbose,tmargin=2cm,bmargin=3cm,lmargin=1.8cm,rmargin=1.5cm,headheight=2cm,headsep=2cm,footskip=3cm}
+%\usepackage{array}
+%\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%
+%%\usepackage{graphicx}
+%%\usepackage{setspace}
+%%\usepackage{parskip}
+%
+%\def \hsp {\hspace{3mm}}
+%
+%\makeatletter
+%
+%\providecommand{\tabularnewline}{\\}
+%
+%
+%
+%\makeatother
+%\ifxetex
+%\usepackage[T1]{fontenc}
+%\usepackage{fontspec}
+%%\setmainfont[ Path = fonts/]{Sanskrit_2003.ttf}
+%\newfontfamily\nakulafont[Script=Devanagari,AutoFakeBold=2,Path = fonts/]{Nakula}
+%%\newfontfamily\liberationfont{Liberation Sans Narrow}
+%%\newfontfamily\liberationsansfont{Liberation Sans}
+%\fi
+%\usepackage{tikz}
+%\usepackage{xcolor}
+%%\usepackage{enumerate}
+%
+%%\usepackage{wasysym}
+%%\newcounter{MYtempeqncnt}
+%\DeclareMathOperator*{\Res}{Res}
+%%\renewcommand{\baselinestretch}{2}
+%\renewcommand\thesection{\arabic{section}}
+%\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+%\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+%
+%\renewcommand\thesectiondis{\arabic{section}}
+%\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+%\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+%
+%% correct bad hyphenation here
+%\hyphenation{op-tical net-works semi-conduc-tor}
+%\def\inputGnumericTable{}                                 %%
+%
+%\lstset{
+%language=tex,
+%frame=single, 
+%breaklines=true
+%}
+%
+%%\begin{document}
+%%
+%
+%
+%\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{problem}{Problem}
+%\newtheorem{proposition}{Proposition}[section]
+%\newtheorem{lemma}{Lemma}[section]
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{example}{Example}[section]
+%\newtheorem{definition}[problem]{Definition}
+%%\newtheorem{thm}{Theorem}[section] 
+%%\newtheorem{defn}[thm]{Definition}
+%%\newtheorem{algorithm}{Algorithm}[section]
+%%\newtheorem{cor}{Corollary}
+%\newcommand{\BEQA}{\begin{eqnarray}}
+%\newcommand{\EEQA}{\end{eqnarray}}
+%\newcommand{\define}{\stackrel{\triangle}{=}}
+%
+%\bibliographystyle{IEEEtran}
+%%\bibliographystyle{ieeetr}
+%
+%
+%\providecommand{\mbf}{\mathbf}
+%\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+%\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+%\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+%\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+%\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+%\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+%\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+%\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+%\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+%\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+%\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+%\theoremstyle{remark}
+%\newtheorem{rem}{Remark}
+%\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+%\providecommand{\abs}[1]{\left\vert#1\right\vert}
+%\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+%\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+%%\providecommand{\norm}[1]{\lVert#1\rVert}
+%\providecommand{\mtx}[1]{\mathbf{#1}}
+%\providecommand{\mean}[1]{E\left[ #1 \right]}
+%%\numberwithin{equation}{section}
+%\numberwithin{equation}{section}
+%%\numberwithin{problem}{section}
+%%\numberwithin{definition}{section}
+%\makeatletter
+%\@addtoreset{figure}{problem}
+%\makeatother
+%
+%\let\StandardTheFigure\thefigure
+%\let\vec\mathbf
+%%\renewcommand{\thefigure}{\theproblem.\arabic{figure}}
+%\renewcommand{\thefigure}{\theproblem}
+%%\setlist[enumerate,1]{before=\renewcommand\theequation{\theenumi.\arabic{equation}}
+%%\counterwithin{equation}{enumi}
+%
+%
+%%\renewcommand{\theequation}{\arabic{subsection}.\arabic{equation}}
+%
+%\vspace{3cm}
+%
+%
+%%\usepackage{babel}
+%\begin{document}
+%
+%\begin{tabular}{L{6cm} C{5cm} R{5cm} }
+%
+%	\definecolor{circleorange}{rgb}{1,0.17,0.08}
+%\definecolor{darkorange}{rgb}{1,0.27,0.1}
+%\definecolor{orange2}{rgb}{1,0.5,0.15}
+%\definecolor{orange3}{rgb}{1,0.65,0.25}
+%\definecolor{yellow1}{rgb}{0.95,0.77,0.2}
+%%\begin{tikzpicture}[scale=0.2,every node/.style={transform shape}]
+%\begin{tikzpicture}[scale=0.1,every node/.style={transform shape}]
+%\draw [fill=circleorange,circleorange] (5,10) circle (1.15); 
+%\fill [darkorange] (5.06,8) -- (5.06,2) -- (7.3,1.2) -- (7.3,8.8) -- (5.06,8);
+%\fill [darkorange] (4.94,8) -- (4.94,2) -- (2.7,1.2) -- (2.7,8.8) -- (4.94,8);
+%\fill [orange2]    (7.4,8.4) -- (7.4,1.6) -- (8.2,1.2) -- (8.2,8.8) -- (7.4,8.4);
+%\fill [orange2]    (2.6,8.4) -- (2.6,1.6) -- (1.8,1.2) -- (1.8,8.8) -- (2.6,8.4);
+%\fill [orange3]    (8.3,8.4) -- (8.3,1.6) -- (9.0,1.2) -- (9.0,8.8) -- (8.3,8.4);
+%\fill [orange3]    (1.7,8.4) -- (1.7,1.6) -- (1.0,1.2) -- (1.0,8.8) -- (1.7,8.4);
+%\fill [yellow1]    (9.1,8.4) -- (9.1,1.6) -- (9.7,1.2) -- (9.7,8.8) -- (9.1,8.4);
+%\fill [yellow1]    (0.9,8.4) -- (0.9,1.6) -- (0.3,1.2) -- (0.3,8.8) -- (0.9,8.4);
+%\ifxetex
+%\node [scale=2.1] at (5,-0.1)  {   {\bf {\nakulafont  भारतीय प्रौद्योगिकी संस्थान हैदराबाद }} };
+%\node [scale=1.8] at (5,-1.2) {   {\bf { Indian Institute of Technology Hyderabad}} };
+%%\node [scale=1.8] at (5,-1.2) {   {\bf {\liberationsansfont Indian Institute of Technology Hyderabad}} };
+%\fi
+%\end{tikzpicture}
+%% \includegraphics[scale=0.05]{logo_iith} \newline
+%
+%& Assignments 
+%	&
+%	AI1110
+%\end{tabular}
+%
+%
+%\vspace{-6mm}
+%\begin{center}
+%%\includegraphics[scale=0.95]{Yellow-Line}
+%\begin{tikzpicture}
+%\definecolor{yellow1}{rgb}{0.95,0.77,0.2}
+%\draw[line width=0.75mm, yellow1] (0,0) -- (\textwidth,0);
+%\end{tikzpicture}
+%\par\end{center}
+		\numberwithin{equation}{enumi}
+
+
+\section{Triangular Distribution}
+\begin{enumerate}[label=\thesection.\arabic*
+,ref=\thesection.\theenumi]
+%
+\item Generate 
+	\begin{align}
+		T = U_1+U_2
+	\end{align}
+\solution
+The value of T is generated in tri.dat file
+\begin{lstlisting}
+https://github.com/RavishaJain/Assignment_4/blob/main/Codes/exrand.c
+https://github.com/RavishaJain/Assignment_4/blob/main/Codes/coeffs.h
+\end{lstlisting} 
+\item Find the CDF of $T$.\\
+\solution
+The Python code for the cdf is
+\begin{lstlisting}
+https://github.com/RavishaJain/Assignment_4/blob/main/Codes/TRIcdf.py
+\end{lstlisting}
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{./Figs/TRI_cdf}
+\caption{The CDF of $T$}
+\label{fig:TRI_cdf}
+\end{figure}
+
+\item Find the PDF of $T$.\\
+\solution
+The Python code for the pdf is
+\begin{lstlisting}
+https://github.com/RavishaJain/Assignment_4/blob/main/Codes/TRIpdf.py
+\end{lstlisting}
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{./Figs/TRIpdf}
+\caption{The PDF of $T$}
+\label{fig:TRIpdf}
+\end{figure}
+\item Find the theoretical expressions for the PDF and CDF of $T$.\\
+\solution
+We know,
+		\begin{align}
+			F_T(t) &= \pr{U_1 + U_2 \leq t} \\
+			&= \pr{U_1 \leq t - U_2} 
+			\end{align}
+Here $U_1$ and $U_2$ are independent variables on [0,1],hence we can use convolution formula
+\begin{align}
+& f_T(t)= \int_{0}^{1}F_{U_1}(t - x)F_{U_2}(x)dx
+\\
+& F_T(t)=  \int_{0}^{1}f_Z(u)dx
+\end{align}
+		Now , we use the fact that $U_1$ and $U_2$ are independent $Unif(0,1)$ random variables.
+We have following cases:
+		\begin{enumerate}
+			\item $t < 0$: Using ,
+			\begin{align}
+			F_T(t) = 
+			\begin{cases}
+				0 & x < 0 \\
+				x & 0 \leq x < 1 \\
+				1 & x \geq 1
+			\end{cases}
+			\end{align}
+		Therefore, $F_T(t) = 0$.
+			\item  We will
+			
+			$0 \leq t < 1$: We have,$0\leq t<1 $\\
+			Therefore,
+				\begin{align}
+		               & f_T(t) = \int_{0}^{t}1.1dx = t
+                       \\
+                       & f_T(t) = \int_{0}^{t}tdt 
+                       =\left(\frac{t^2}{2}\right)_{0}^{t}				                       \\
+					    & =\frac{t^2}{2}
+				\end{align}
+			\item $1 \leq t < 2$: Here, we need to be careful about range of $U_1,U_2$
+				\begin{align}
+					& f_T(t) = \int_{t - 1}^{1} 1.1 dx =2-t
+					 \\
+					& F_T(t) =\int_{0}^{1}tdt +\int_{1}^{t}(2-t)dt
+					 \\ 
+					 & =\left(\frac{t^2}{2}\right)^{1}_{0} + 2\left(t\right)^{t}_{1}-\left(\frac{t^2}{2}\right)^{t}_{0} 
+					 \\ 
+					&= 2t -\frac{t^2}{2}  - 1
+				\end{align}
+			\item $t \geq 2$: Here, $F_T(t) = 1$.
+		\end{enumerate}
+Therefore,
+		\begin{align}
+			F_T(t) = 
+			\begin{cases} 
+				0 & t < 0 \\
+				\frac{t^2}{2} &  0 \leq t < 1 \\
+				2t -\frac{t^2}{2} - 1 & 1 \leq t < 2 
+			\end{cases}
+			\label{eq:cdf-tri}
+		\end{align}
+and, 
+		\begin{align}
+			f_T(t) = 
+			\begin{cases}
+				t & 0 \leq t < 1 \\
+				2 - t & 1 \leq t < 2 \\
+				0 & \text{otherwise}
+			\end{cases}
+			\label{eq:pdf-tri}
+		\end{align}
+
+\item Verify your results through a plot. \\
+\solution
+The plots for the results are in Fig 1.2 and Fig 1.3.\\
+\end{enumerate}
+
+\end{document}
